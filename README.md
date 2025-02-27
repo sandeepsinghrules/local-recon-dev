@@ -1,4 +1,4 @@
-# laza-spa
+# Local Recon
 
 ## Project setup
 ```
