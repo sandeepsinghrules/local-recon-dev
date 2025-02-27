@@ -1,0 +1,21 @@
+{
+    "name": "Vue.js Dev Container",
+    "image": "mcr.microsoft.com/devcontainers/javascript-node:16",
+    "features": {
+      "ghcr.io/devcontainers/features/node:1": {
+        "version": "16"
+      }
+    },
+    "forwardPorts": [8086],
+    "postCreateCommand": "npm install",
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "esbenp.prettier-vscode",
+          "dbaeumer.vscode-eslint",
+          "octref.vetur"
+        ]
+      }
+    }
+  }
+  

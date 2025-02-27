@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Local Recon</title>
+    <!-- Stripe -->
+    <!-- <script src="https://js.stripe.com/v3/"></script> -->
+    <!-- Global site tag (gtag.js) - Google Ads: 1002929585 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1002929585"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqF2vFVUoyeU3la0XVOQSOdkhgAfQdBEs&libraries=places"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://regro-cdn.s3.amazonaws.com/css/sweetalert2/sweetalert2.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/tabulator/5.3.4/css/tabulator.min.css">
+
+    <script type="text/javascript">
+      document.domain = window.location.host.split(':')[0].replace("app.", "");
+    </script>
+
+    <style type="text/css">
+      .v-main__wrap, .v-application--wrap {
+        width: 100%;
+      }
+
+      /* CSS THAT IS NOT WORKING IN THE main.css FILE */
+      .theme--light.v-select .v-select__selection--comma {
+        color: rgba(25, 35, 58, 0.7) !important;
+        font-size: 12px !important;
+      }
+
+      .v-application--is-ltr .v-list-item__action:first-child, .v-application--is-ltr .v-list-item__icon:first-child
+      {
+        margin-right: 13px !important;
+      }
+
+      .v-expansion-panel-header.v-expansion-panel-header--active {
+        background: #f4f8ff !important;
+        color: #2477F6 !important;
+      }
+
+      .apexcharts-legend-series {
+        margin-right: 22px !important;
+      }
+
+      .v-input--is-label-active .v-input--switch__thumb.theme--light {
+        color: #FFFFFF !important;
+      }
+
+      .v-input--is-label-active .v-input--switch__track.theme--light {
+        color: #48bb78 !important;
+        opacity: 1 !important;
+      }
+      /* CSS THAT IS NOT WORKING IN THE main.css FILE */
+    </style>
+
+    <!-- <script>
+      !function(g,s,q,r,d){r=g[r]=g[r]||function(){(r.q=r.q||[]).push(arguments)};
+      d=s.createElement(q);d.src='//d1l6p2sc9645hc.cloudfront.net/gosquared.js';q=
+      s.getElementsByTagName(q)[0];q.parentNode.insertBefore(d,q)}(window,document
+      ,'script','_gs');
+
+      _gs('GSN-786844-V');
+      _gs('set', 'anonymizeIP', true);
+      _gs('set', 'trackLocal', true);
+    </script> -->
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but Reviewgrower doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+    <!-- <div>rgr_wht_lbl_chck</div> -->
+
+    <script>
+      var RAAFT_APP_ID="tzZpC5x6Db8QnKez0qYr";
+      (function(r,aa,f,t,dot,i,o) {
+         r[dot] =
+             r[dot] ||
+             function() {
+                 (r[dot].q = r[dot].q || []).push(arguments);
+             };
+         r[dot].l = 1 * new Date();
+         i = aa.createElement(f);
+         o = aa.getElementsByTagName(f)[0];
+         i.id = 'raaftScript';      i.async = 1;
+         i.src = t;
+         o.parentNode.insertBefore(i, o);
+      })(window, document, 'script', '//app.raaft.io/include.js?appId='+RAAFT_APP_ID, 'raaft');
+   </script>
+
+    <style type="text/css">
+      .rg-sidebar-left .v-list-item {
+        border-left: solid 3px transparent;
+        /* opacity: 0.8; */
+      }
+      
+      .rg-sidebar-left .v-list-item--active {
+        background: rgba(255, 255, 255, 0.05) !important;
+        border-left: solid 3px #3A9BDB;
+        font-weight: bold;
+        opacity: 1;
+      }
+
+      .v-input--radio-group__input .theme--light.v-icon:not(.primary--text) {
+        color: #c4c5c7 !important;
+      }
+
+      .v-application .primary--text {
+        color: #2477F6 !important;
+        caret-color: #2477F6 !important;
+      }
+
+      .v-input--radio-group__input .v-icon::before {
+        transform: scale(0.8);
+        font-weight: bold;
+      }
+
+      /* .rg-top-filter fieldset {
+        border: 0px !important;
+      } */
+
+      main.v-main.widgets_render, main.v-main.widgets_render_local_recon {
+        background: transparent !important;
+      }
+
+      .tabulator, .tabulator-row .tabulator-cell, .tabulator .tabulator-header .tabulator-col {
+        border: 0px !important;
+      }
+
+      .tabulator .tabulator-header {
+        border: 0px !important;
+      }
+
+      .tabulator-col-content {
+        background: #F7F8F8 !important;
+      }
+
+      .tabulator-row {
+        border: 0px !important;
+      }
+
+      .tabulator-table .tabulator-row:nth-child(odd) {
+        background-color: #FFFFFF !important;
+      }
+
+      .tabulator-table .tabulator-row:nth-child(even) {
+        background-color: #FBFBFB;
+      }
+
+      .lf-inbox-new-message-field fieldset {
+        padding: 5px;
+        border: 0px;
+      }
+
+      .v-menu__content {
+        position: fixed !important;
+        max-height: 400px;
+        overflow: auto;
+      }
+
+      .tabulator-headers .tabulator-col:nth-child(1) .tabulator-col-title {
+        text-align: center;
+      }
+
+      .v-progress-circular--indeterminate:not(.v-progress-circular--visible) .v-progress-circular__overlay, .v-progress-circular--indeterminate:not(.v-progress-circular--visible)>svg {
+        animation-play-state: running !important;
+      }
+
+      .vue-map {
+        height: 100% !important;
+      }
+
+      .lr-modern-widget-fields .v-input, .lr-preview-comp .lr-modern-widget-fields .v-select__slot {
+        height: 40px !important;
+      }
+
+      .lr-preview-comp .v-input__icon {
+        height: 11px !important;
+      }
+
+      .lr-preview-comp .lr-modern-widget-fields .v-text-field--outlined .v-label {
+        top: 11px !important;
+      }
+
+      .lr-modern-widget-fields fieldset {
+        border: 0px !important;
+      }
+
+      .progress {
+        display: -ms-flexbox;
+        display: -webkit-box;
+        display: flex;
+        height: 1rem;
+        overflow: hidden;
+        line-height: 0;
+        font-size: 0.75rem;
+        border-radius: 0.25rem;
+      }
+
+      .progress-bar {
+        display: -ms-flexbox;
+        display: -webkit-box;
+        display: flex;
+        -ms-flex-direction: column;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+        -ms-flex-pack: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        overflow: hidden;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-transition: width 0.6s ease;
+        transition: width 0.6s ease;
+      }
+      /* CSS THAT IS NOT WORKING IN THE main.css FILE */
+      .custom-data-table .v-data-footer {
+        display: none !important;
+      }
+    </style>
+  </body>
+</html>

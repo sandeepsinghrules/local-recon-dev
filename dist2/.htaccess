@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  #RewriteRule ^/js/v1/embed.js?token=b8f25617-7a3f-470a-b545-6e04f39623e4$ widget_js.php [L]
+
+  RewriteCond %{REQUEST_URI} embed
+  RewriteRule .* widget_js.php
+
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule> 
