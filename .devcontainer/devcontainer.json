@@ -6,7 +6,7 @@
       "version": "18"
     }
   },
-  "postCreateCommand": "npm install --legacy-peer-deps",
+  "postCreateCommand": "bash .devcontainer/setup.sh",
   "customizations": {
     "vscode": {
       "extensions": [
